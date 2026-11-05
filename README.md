@@ -26,4 +26,14 @@ GitHub guidance: https://docs.github.com/en/pages/configuring-a-custom-domain-fo
 
 Local structural validation passed for BOM-less UTF-8, document metadata, a single H1 and main landmark per page, unique IDs, all internal link targets and fragments, contact addresses, CNAME content, and sitemap XML. A validation pass is not a legal opinion or API approval.
 
-Browser verification and deployment results are recorded below after execution. Windows is the authoring platform; macOS and Linux have not been independently tested. The static site does not require Python, but the adjacent Scrapper environment's mandated pytest, Ruff check, Ruff format check, and mypy checks are run separately without changing its application source.
+Windows is the authoring platform; macOS and Linux have not been independently tested. The static site does not require Python, but the adjacent Scrapper environment's mandated pytest, Ruff check, Ruff format check, and mypy checks were run separately without changing its application source: 104 tests passed, Ruff lint and formatting passed, and mypy found no issues in 32 source files.
+
+### Deployment verification — November 5, 2026
+
+- Public repository created and site committed to `main`; GitHub Pages reports a successful build from branch `main`, path `/`.
+- Headless Microsoft Edge checked all three pages at widths of 1440, 768, 390, and 320 pixels, both with the Tailwind CDN enabled and blocked. Every page returned HTTP 200 with no horizontal overflow or JavaScript exceptions. Desktop and mobile screenshots were visually inspected. Browser processes and temporary HTTP servers were closed after checks.
+- Spaceship readback confirms exactly four apex A records and the `www` CNAME specified above. Both original MX records and the original SPF TXT record remain intact. No other domain was queried or modified.
+- PowerShell `Resolve-DnsName` confirms all four apex addresses and the `www` CNAME; Cloudflare and Google public resolvers also returned the apex records. Email MX routing was verified separately.
+- GitHub approved the TLS certificate for `catalognexus.com` and `www.catalognexus.com`; its reported expiry is February 2, 2027. HTTPS enforcement is enabled. Initial negative DNS caching delayed provisioning; removing and restoring the Pages custom-domain setting restarted the check, as documented by GitHub. GitHub's automatic CNAME commits were synchronized locally.
+- The homepage, privacy policy, terms, stylesheet, robots file, and sitemap were fetched over certificate-verified HTTPS and matched their local SHA-256 hashes. Both HTTP apex and HTTPS `www` return HTTP 301 to `https://catalognexus.com/`. The published CNAME also returned HTTP 200.
+- No purchase, subscription, hosting upgrade, paid add-on, email, or live retailer request was made. No email verification was requested by the deployment tools. No OAuth app or third-party API approval was submitted or granted by this deployment.
