@@ -1,0 +1,127 @@
+{
+  "tool": "CatalogNexus file-only diagnostic",
+  "version": "0.1.0",
+  "demo": true,
+  "source": "demo_catalog.csv",
+  "source_sha256": "e7a56a17e3c6c2ca2db6a734a8e6b0b78ef2f6750d7a65c5b083c2e34ea26b60",
+  "generated_utc": "2026-11-07T22:36:55.044533+00:00",
+  "data_records": 14,
+  "columns": [
+    "sku",
+    "title",
+    "price",
+    "currency",
+    "stock",
+    "gtin",
+    "image_url"
+  ],
+  "affected_records": 10,
+  "issue_counts": {
+    "SKU_COLLISION": 2,
+    "SURROUNDING_WHITESPACE": 1,
+    "MISSING_VALUE": 1,
+    "INVALID_PRICE": 2,
+    "SPREADSHEET_FORMULA_PREFIX": 2,
+    "CURRENCY_FORMAT": 1,
+    "INVALID_STOCK": 1,
+    "GTIN_CHECK_DIGIT": 1,
+    "IMAGE_URL_FORMAT": 1
+  },
+  "severity_counts": {
+    "review": 5,
+    "error": 7
+  },
+  "issues": [
+    {
+      "record": 5,
+      "field": "sku",
+      "code": "SKU_COLLISION",
+      "severity": "review",
+      "detail": "Case/whitespace-normalized SKU also occurs in records 5, 6. Check variant rules before merging or changing anything."
+    },
+    {
+      "record": 5,
+      "field": "sku",
+      "code": "SURROUNDING_WHITESPACE",
+      "severity": "review",
+      "detail": "Surrounding whitespace found; source was not changed."
+    },
+    {
+      "record": 6,
+      "field": "sku",
+      "code": "SKU_COLLISION",
+      "severity": "review",
+      "detail": "Case/whitespace-normalized SKU also occurs in records 5, 6. Check variant rules before merging or changing anything."
+    },
+    {
+      "record": 7,
+      "field": "title",
+      "code": "MISSING_VALUE",
+      "severity": "error",
+      "detail": "Required value is blank."
+    },
+    {
+      "record": 8,
+      "field": "price",
+      "code": "INVALID_PRICE",
+      "severity": "error",
+      "detail": "Expected a finite, nonnegative decimal price without a currency symbol or grouping separator."
+    },
+    {
+      "record": 8,
+      "field": "price",
+      "code": "SPREADSHEET_FORMULA_PREFIX",
+      "severity": "review",
+      "detail": "Potential spreadsheet formula prefix. Review before opening as a spreadsheet; may be legitimate text or a negative number."
+    },
+    {
+      "record": 9,
+      "field": "price",
+      "code": "INVALID_PRICE",
+      "severity": "error",
+      "detail": "Expected a finite, nonnegative decimal price without a currency symbol or grouping separator."
+    },
+    {
+      "record": 10,
+      "field": "currency",
+      "code": "CURRENCY_FORMAT",
+      "severity": "error",
+      "detail": "Expected three uppercase ASCII letters. Currency-code existence is not checked."
+    },
+    {
+      "record": 11,
+      "field": "stock",
+      "code": "INVALID_STOCK",
+      "severity": "error",
+      "detail": "Expected a nonnegative whole number under this schema; backorders require a separately agreed rule."
+    },
+    {
+      "record": 12,
+      "field": "gtin",
+      "code": "GTIN_CHECK_DIGIT",
+      "severity": "error",
+      "detail": "GTIN length, digits or check digit failed. Ownership and product identity are not verified."
+    },
+    {
+      "record": 13,
+      "field": "image_url",
+      "code": "IMAGE_URL_FORMAT",
+      "severity": "error",
+      "detail": "Expected an HTTP(S) URL without embedded credentials or whitespace. No network request was made."
+    },
+    {
+      "record": 14,
+      "field": "title",
+      "code": "SPREADSHEET_FORMULA_PREFIX",
+      "severity": "review",
+      "detail": "Potential spreadsheet formula prefix. Review before opening as a spreadsheet; may be legitimate text or a negative number."
+    }
+  ],
+  "limits": [
+    "Generic declared schema, not a Shopify or marketplace compliance certification.",
+    "Review findings do not prove invalid products or lost revenue.",
+    "GTIN registration, currency-code existence, images, inventory truth and live prices are not verified.",
+    "No source edits, store imports, network calls, payment handling or customer data needed.",
+    "Record numbers count CSV records including the header; multiline records differ from physical line numbers."
+  ]
+}

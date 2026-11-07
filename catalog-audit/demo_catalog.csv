@@ -1,0 +1,15 @@
+sku,title,price,currency,stock,gtin,image_url
+000001,Travel mug,19.95,USD,42,4006381333931,https://example.com/mug.jpg
+000002,Desk lamp,39.50,USD,12,96385074,https://example.com/lamp.jpg
+000003,USB hub,24.00,USD,20,,https://example.com/hub.jpg
+ abc-04 ,Laptop stand,49.00,USD,8,,https://example.com/stand.jpg
+ABC-04,Laptop stand,49.00,USD,8,,https://example.com/stand.jpg
+000006,,15.00,USD,9,,https://example.com/cable.jpg
+000007,Keyboard,-5.00,USD,3,,https://example.com/keyboard.jpg
+000008,Monitor arm,NaN,USD,7,,https://example.com/arm.jpg
+000009,Mouse,12.50,usd,2,,https://example.com/mouse.jpg
+000010,Screen cloth,4.00,USD,2.5,,https://example.com/cloth.jpg
+000011,Notebook,7.00,USD,14,4006381333932,https://example.com/notebook.jpg
+000012,Adapter,10.00,USD,11,,javascript:alert(1)
+000013,=1+1,11.00,USD,6,,https://example.com/adapter.jpg
+000014,"Cable, braided",8.50,USD,10,,https://example.com/cable-braided.jpg
